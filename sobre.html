@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Conheça o Grupo de Pesquisa GP/OCRI - Organização do Conhecimento para Recuperação da Informação da UNIRIO">
+  <meta name="keywords" content="organização do conhecimento, recuperação da informação, pesquisa">
+  <title>Sobre - GP/OCRI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+  </script>
+
+  <main>
+    <section class="hero-page">
+      <div class="hero-page-content">
+        <h1>Sobre o GP/OCRI</h1>
+        <p>Investigação teórica e aplicada em Organização do Conhecimento desde 2005</p>
+      </div>
+    </section>
+
+    <section class="sobre-section">
+      <div class="container">
+        
+        <div class="secao-sobre">
+          <h1>Histórico e Missão</h1>
+        <p>
+          Grupo de Pesquisa Organização do Conhecimento para Recuperação da Informação (GP/OCRI) é um grupo de pesquisa vinculado ao Programa de Pós-Graduação em Ciência da Informação da Universidade Federal do Estado do Rio de Janeiro (UNIRIO). Fundado em 2005, o grupo tem como objetivo investigar a Organização do Conhecimento e suas implicações na Recuperação da Informação, com foco em aspectos teóricos e práticos.
+          O grupo é composto por pesquisadores e estudantes de graduação e pós-graduação, que atuam em diversas áreas relacionadas à Organização do Conhecimento, como biblioteconomia, ciência da informação, ciência da computação, entre outras. O GP/OCRI busca promover a troca de experiências e conhecimentos entre seus membros, além de desenvolver pesquisas que contribuam para o avanço da área.
+        </p>
+        <p>
+          O O GP/OCRI é coordenado pelos professores Marcos Luiz Cavalcanti de Miranda e Brisa Pozzi de Sousa, ambos doutores em Ciência da Informação e com vasta experiência na área. O grupo conta ainda com a participação de outros professores e pesquisadores, que atuam em diversas áreas relacionadas à Organização do Conhecimento e Recuperação da Informação.
+        </p>
+        <p>Considerando o crescimento teórico e aplicado que a Organização do Conhecimento tem vivenciado em nível internacional, notadamente no âmbito da ISKO (International Society for Knowledge Organization), busca-se investigar os problemas inerentes à Organização do Conhecimento para fins de Recuperação da Informação, com especial destaque para as dimensões teórica e aplicada, de modo a que os aspectos filosóficos e éticos, tecnológicos, educacionais e científicos, possam ser melhor compreendidos em ambientes tradicionais e virtuais, de maneira especial a partir da realidade brasileira. Para tanto, as ações basilares da linha, centrar-se-ão nas seguintes frentes de investigação:
+        </p>
+        <ol type="a">
+          <li>Aspectos epistemológicos da Organização do Conhecimento e suas implicações no ensino e na pesquisa na área;</li>
+          <li>Impactos sociais e éticos das tecnologias da informação na Organização do Conhecimento para fins de Recuperação da Informação.</li>
+        </ol>
+
+        </div>
+
+        <div class="sobre-section">
+          <h2>Linhas de Pesquisa</h2>
+          <p>Organização do Conhecimento, Tratamento da Informação e Práticas Infocomunicacionais – investiga aspectos epistemológicos da Organização do Conhecimento e suas implicações no ensino e na pesquisa na área, além dos impactos sociais e éticos das tecnologias da informação.
+          </p>
+            <div class="linha-item">
+              <h3>Organização do Conhecimento, Tratamento da Informação e Práticas Infocomunicacionais</h3>
+              <p>
+                Investiga aspectos epistemológicos da Organização do Conhecimento e suas implicações 
+                no ensino e na pesquisa na área, além dos impactos sociais e éticos das tecnologias 
+                da informação.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <button id="btnTopo" title="Voltar ao topo">↑</button>
+  <script>
+    const btnTopo = document.getElementById("btnTopo");
+    window.onscroll = function () {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        btnTopo.style.display = "block";
+      } else {
+        btnTopo.style.display = "none";
+      }
+    };
+    btnTopo.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <div id="footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>

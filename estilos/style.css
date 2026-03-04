@@ -293,13 +293,13 @@ body {
    Funcionalidade: Seção com informações sobre o grupo de pesquisa
    Visual: Texto centralizado em coluna única com largura máxima
    ======================================== */
+
 .sobre-section {
-  /* padding: espaçamento interno grande */
-  padding: var(--spacing-xl) 8%;
-  /* max-width: 900px - limita largura para melhor leitura */
-  margin: 0 auto;
-  /* text-align: center - centraliza todo conteúdo */
-  text-align: center;
+  /* padding: espaçamento interno */
+  padding: var(--spacing-md) 8%;
+  max-width: 400px; /* limita largura para melhor leitura */
+  margin: 0 auto; /* centraliza horizontalmente */
+  text-align: center; /* text-align: center - centraliza todo conteúdo */
   background: #b3cba7;
 }
 
