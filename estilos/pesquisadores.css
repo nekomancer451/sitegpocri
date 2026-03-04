@@ -1,0 +1,389 @@
+/* ========================================
+   PÁGINA PESQUISADORES
+   Arquivo: pesquisadores.css
+   Padrão: Segue as variáveis e estilo do style.css
+   Funcionalidade: Estilos específicos para a página de pesquisadores
+   ======================================== */
+
+/* ========================================
+   HERO PAGE DE PESQUISADORES
+   Referência no HTML: <section class="hero-page">
+   Funcionalidade: Seção hero introdutória da página com título menor que a principal
+   Visual: Background diferenciado, altura menor que hero padrão
+   ======================================== */
+.hero-page {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8%;
+  background: linear-gradient(135deg, #e8f0e8 0%, #d4e0d4 100%);
+}
+
+/* .hero-page .hero-content: Container do conteúdo
+   Funcionalidade: Centraliza título e parágrafo da página */
+.hero-page .hero-content {
+  max-width: 700px;
+  text-align: center;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease;
+}
+
+/* .hero-page h1: Título principal da página
+   Funcionalidade: Apresenta o nome da página */
+.hero-page h1 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+/* .hero-page p: Subtítulo descritivo
+   Funcionalidade: Breve descrição do conteúdo da página */
+.hero-page p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ========================================
+   SEÇÃO PESQUISADORES PAGE
+   Referência no HTML: <section class="pesquisadores-page">
+   Funcionalidade: Seção principal com estatísticas e tabela
+   Visual: Layout com grid para estatísticas e tabela responsiva
+   ======================================== */
+.pesquisadores-page {
+  padding: var(--spacing-xl) 8%;
+  background: var(--color-background);
+}
+
+/* .pesquisadores-page .container: Container principal
+   Funcionalidade: Centraliza conteúdo e define largura máxima */
+.pesquisadores-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* .pesquisadores-page h2: Título de seções internas
+   Funcionalidade: Apresenta títulos como "Pesquisadores Ativos" */
+.pesquisadores-page h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+  text-align: center;
+}
+
+/* ========================================
+   ESTATÍSTICAS (STATS)
+   Referência no HTML: <div class="stats-rh">
+   Funcionalidade: Exibe números e contagem de pesquisadores em cards
+   Visual: Grid responsivo com 4 colunas em desktop
+   ======================================== */
+.stats-rh {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-md) 0;
+}
+
+/* .stat-box: Card individual de estatística
+   Funcionalidade: Container para número e descrição */
+.stat-box {
+  background: var(--color-white);
+  padding: var(--spacing-md);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: var(--transition-long);
+}
+
+/* .stat-box:hover: Efeito ao passar mouse
+   Funcionalidade: Card sobe e ganha sombra para destaque */
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* .stat-box h3: Número da estatística
+   Funcionalidade: Exibe número grande em destaque */
+.stat-box h3 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #628c44;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* .stat-box p: Descrição da estatística
+   Funcionalidade: Texto descritivo abaixo do número */
+.stat-box p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ========================================
+   TABELA DE PESQUISADORES
+   Referência no HTML: <table class="tabela-rh">
+   Funcionalidade: Tabela responsiva com dados de pesquisadores
+   Visual: Headers com background diferenciado, linhas alternadas
+   ======================================== */
+.tabela-rh {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-lg);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* .tabela-rh thead: Cabeçalho da tabela
+   Funcionalidade: Estilo das colunas de título */
+.tabela-rh thead {
+  background: #628c44;
+}
+
+/* .tabela-rh th: Células do cabeçalho
+   Funcionalidade: Títulos das colunas com texto branco */
+.tabela-rh th {
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-white);
+  font-weight: 600;
+  text-align: left;
+  font-size: 1rem;
+  border: none;
+}
+
+/* .tabela-rh td: Células de dados
+   Funcionalidade: Padding consistente e cor de texto apropriada */
+.tabela-rh td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-text);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* .tabela-rh tbody tr: Linhas do corpo da tabela
+   Funcionalidade: Background alternado para melhor legibilidade */
+.tabela-rh tbody tr {
+  background: var(--color-white);
+  transition: background var(--transition);
+}
+
+/* .tabela-rh tbody tr:nth-child(odd): Linhas pares com background diferente
+   Funcionalidade: Cria padrão alternado para legibilidade */
+.tabela-rh tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* .tabela-rh tbody tr:hover: Efeito ao passar mouse
+   Funcionalidade: Linha fica destacada ao hover */
+.tabela-rh tbody tr:hover {
+  background: #f0f5e8;
+}
+
+/* .tabela-rh tbody tr:last-child td: Última linha
+   Funcionalidade: Remove borda inferior da última linha */
+.tabela-rh tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* .tabela-rh .nome: Coluna de nome
+   Funcionalidade: Destaca o nome do pesquisador */
+.tabela-rh .nome {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* .tabela-rh .titulacao: Coluna de titulação
+   Funcionalidade: Exibe nível acadêmico */
+.tabela-rh .titulacao {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+/* .tabela-rh .data: Coluna de data
+   Funcionalidade: Exibe data de inclusão no grupo */
+.tabela-rh .data {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  min-width: 120px;
+}
+
+/* ========================================
+   LEGENDA E INFORMAÇÕES
+   Referência no HTML: <div class="info-legenda">
+   Funcionalidade: Informações adicionais e links importantes
+   Visual: Texto centralizado com link destacado
+   ======================================== */
+.info-legenda {
+  background: #f0f5e8;
+  padding: var(--spacing-md);
+  border-radius: 10px;
+  text-align: center;
+  border-left: 4px solid #628c44;
+}
+
+/* .info-legenda p: Parágrafos de informação
+   Funcionalidade: Texto com informações sobre atualização e direitos */
+.info-legenda p {
+  margin: var(--spacing-sm) 0;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+/* .info-legenda strong: Texto em negrito
+   Funcionalidade: Destaca palavras-chave */
+.info-legenda strong {
+  color: var(--color-text);
+}
+
+/* .info-legenda a: Links na legenda
+   Funcionalidade: Link para CNPq com hover efeito */
+.info-legenda a {
+  color: #628c44;
+  text-decoration: none;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.info-legenda a:hover {
+  text-decoration: underline;
+  color: #4a6630;
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLETS (max-width: 768px)
+   Funcionalidade: Ajusta layout para telas médias
+   Alterações: Fonts menores, grid com menos colunas
+   ======================================== */
+@media (max-width: 768px) {
+  .hero-page {
+    height: 40vh;
+  }
+
+  .hero-page h1 {
+    font-size: 2rem;
+  }
+
+  .hero-page p {
+    font-size: 0.95rem;
+  }
+
+  .pesquisadores-page {
+    padding: var(--spacing-lg) 5%;
+  }
+
+  .pesquisadores-page h2 {
+    font-size: 1.7rem;
+  }
+
+  .stats-rh {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .stat-box h3 {
+    font-size: 2.5rem;
+  }
+
+  .stat-box p {
+    font-size: 0.9rem;
+  }
+
+  .tabela-rh th,
+  .tabela-rh td {
+    padding: var(--spacing-sm) 10px;
+    font-size: 0.9rem;
+  }
+
+  .tabela-rh .data {
+    min-width: 100px;
+  }
+
+  .info-legenda {
+    padding: var(--spacing-sm);
+  }
+
+  .info-legenda p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE - MOBILE (max-width: 480px)
+   Funcionalidade: Otimiza layout para smartphones
+   Alterações: Uma coluna, tabela compacta, fonts bem menores
+   ======================================== */
+@media (max-width: 480px) {
+  .hero-page {
+    height: 35vh;
+    padding: 0 4%;
+  }
+
+  .hero-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-page p {
+    font-size: 0.9rem;
+  }
+
+  .pesquisadores-page {
+    padding: var(--spacing-lg) 4%;
+  }
+
+  .pesquisadores-page h2 {
+    font-size: 1.4rem;
+    margin: var(--spacing-md) 0 var(--spacing-sm);
+  }
+
+  .stats-rh {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .stat-box {
+    padding: var(--spacing-sm);
+  }
+
+  .stat-box h3 {
+    font-size: 2rem;
+  }
+
+  .stat-box p {
+    font-size: 0.85rem;
+  }
+
+  .tabela-rh {
+    font-size: 0.85rem;
+  }
+
+  .tabela-rh th,
+  .tabela-rh td {
+    padding: 8px 5px;
+  }
+
+  .tabela-rh .data {
+    min-width: 80px;
+  }
+
+  .info-legenda {
+    padding: var(--spacing-sm);
+    border-left-width: 3px;
+  }
+
+  .info-legenda p {
+    font-size: 0.85rem;
+    margin: 8px 0;
+  }
+}
+
+/* ========================================
+   ANIMAÇÕES
+   Funcionalidade: Reutiliza animações do style.css
+   Uso: fadeInUp já está definida no style.css principal
+   ======================================== */
