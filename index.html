@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>GP/OCRI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER DINÂMICO -->
+<div id="header"></div>
+<script>
+  fetch("header.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("header").innerHTML = data;
+    });
+</script>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="tag">Grupo de Pesquisa</span>
+    <h1>
+      Organização do Conhecimento para Recuperação da Informação
+    </h1>
+    <p>
+      Investigação teórica e aplicada em Organização do Conhecimento, com foco na Recuperação da Informação e na realidade brasileira.
+    </p>
+    <a href="#sobre" class="btn-primary">Conheça o Grupo</a>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="sobre-section">
+  <div class="container">
+    <h2>Sobre o Grupo</h2>
+
+    <p>
+      O GP/OCRI é vinculado ao Programa de Pós-Graduação em Ciência da Informação da UNIRIO.
+      Desde 2005, desenvolve pesquisas teóricas e aplicadas em Organização do Conhecimento,
+      considerando suas implicações éticas, sociais e tecnológicas.
+    </p>
+
+    <p>
+      O grupo atua na formação de pesquisadores, promovendo eventos,
+      cursos e parcerias nacionais e internacionais.
+    </p>
+
+    <a href="sobre.html" class="btn-secondary">Leia mais</a>
+  </div>
+</section>
+
+<!-- COORDENADORES -->
+<section class="equipe-section">
+  <div class="section-header">
+    <span class="tag">Coordenação</span>
+    <h2>Nossos Coordenadores</h2>
+  </div>
+
+  <div class="container-cards">
+
+    <div class="card">
+      <img src="imagens/profmarcos.jpg" alt="Marcos Luiz Cavalcanti de Miranda">
+      <div class="info">
+        <h3>Marcos Luiz Cavalcanti de Miranda</h3>
+        <p>Doutor em Ciência da Informação e professor associado da UNIRIO.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="imagens/profbrisa.jpg" alt="Brisa Pozzi de Sousa">
+      <div class="info">
+        <h3>Brisa Pozzi de Sousa</h3>
+        <p>Doutora em Ciência da Informação e professora associada da UNIRIO.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PESQUISADORES -->
+<section class="pesquisadores-section">
+  <div class="container">
+    <span class="tag">Equipe</span>
+    <h2>Pesquisadores</h2>
+    <p>
+      Docentes, discentes e colaboradores atuando em Ciência da Informação
+      e áreas correlatas.
+    </p>
+
+    <a href="pesquisadores.html" class="btn-primary">Ver Pesquisadores</a>
+  </div>
+</section>
+
+<!-- PUBLICAÇÕES -->
+<section class="publicacao-section">
+  <div class="section-header">
+    <span class="tag">Produção Científica</span>
+    <h2>Últimas Publicações</h2>
+  </div>
+        
+  <div class="publicacao-grid">
+      <article class="card">
+      <h3>Título da Publicação 1</h3>
+      <p>Um pequeno resumo da publicação para chamar atenção do leitor...</p>
+      <a href="publicacoes/publicacao1.html">Leia mais →</a>
+    </article>
+
+    <article class="card">
+      <h3>Título da Publicação 2</h3>
+      <p>Resumo conciso destacando o tema e relevância da publicação.</p>
+      <a href="publicacoes/publicacao2.html">Leia mais →</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- BOTÃO VOLTAR AO TOPO -->
+<button id="btnTopo">↑</button>
+
+<script>
+  const btnTopo = document.getElementById("btnTopo");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      btnTopo.style.opacity = "1";
+    } else {
+      btnTopo.style.opacity = "0";
+    }
+  });
+
+  btnTopo.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<!-- FOOTER DINÂMICO -->
+<div id="footer"></div>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

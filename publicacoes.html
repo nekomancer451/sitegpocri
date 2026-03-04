@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Publicações</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+  <div id="header"></div>
+
+  <script>
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+  </script>
+
+  <main id="blog-container">
+    <!-- Os posts serão inseridos aqui dinamicamente -->
+  </main>
+
+  <section id="publicacoes" class="publicacoes-section">
+    <div class="container">
+      <h2>Publicações</h2>
+      <div class="post">
+        <h3><a href="publicacoes/publicacao1.html">Como criamos nossa biblioteca digital</a></h3>
+        <p>Texto do post completo aqui...</p>
+      </div>
+      <div class="post">
+        <h3><a href="publicacoes/publicacao2.html">Como criamos nossa biblioteca digital</a></h3>
+        <p>Texto do post completo aqui...</p>
+      </div>
+    </div>
+  </section>
+
+   <div id="footer"></div>
+
+<button id="btnTopo" title="Voltar ao topo">↑</button>
+<script>
+  const btnTopo = document.getElementById("btnTopo");
+
+  window.onscroll = function () {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      btnTopo.style.display = "block";
+    } else {
+      btnTopo.style.display = "none";
+    }
+  };
+
+  btnTopo.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+
+  <div id="footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>

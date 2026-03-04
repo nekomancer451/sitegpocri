@@ -1,0 +1,692 @@
+/* ========================================
+   VARIÁVEIS CSS - CORES E TAMANHOS
+   Funcionalidade: Define valores reutilizáveis em todo o CSS
+   Vantagem: Trocar cores/tamanhos uma vez afeta todo o site
+   ======================================== */
+:root {
+  /* --color-*: Variáveis de cor para textos, backgrounds e elementos */
+  --color-primary: #111;
+  --color-primary-hover: #333;
+  --color-text: #111;
+  --color-text-secondary: #555;
+  --color-text-tertiary: #777;
+  --color-background: #f5f5f3;
+  --color-white: #fff;
+  --color-card-text: #666;
+  
+  /* --spacing-*: Variáveis de espaçamento (padding, margin, gap) */
+  --spacing-xs: 10px;
+  --spacing-sm: 20px;
+  --spacing-md: 40px;
+  --spacing-lg: 100px;
+  --spacing-xl: 120px;
+  
+  /* --transition-*: Durações de animação para efeitos hover/transição */
+  --transition: 0.3s ease;
+  --transition-long: 0.4s ease;
+}
+
+/* ========================================
+   RESET E BASE
+   Funcionalidade: Remove espaçamentos padrão do navegador e define
+   font/cores globais para todo o site
+   ======================================== */
+* {
+  /* remove margin e padding padrão de todos os elementos */
+  margin: 0;
+  padding: 0;
+  /* box-sizing: inclui padding/border no tamanho total do elemento */
+  box-sizing: border-box;
+}
+
+html {
+  /* scroll-behavior: smooth - rolagem suave ao clicar em links âncora (#) */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* font-family: fonte principal com fallbacks caso não carregue */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  /* line-height: espaço entre linhas de texto */
+  line-height: 1.6;
+  /* padding-top: espaço no topo para não ficar coberto pelo header fixo */
+  padding-top: 100px;
+}
+
+/* ========================================
+   HEADER E NAVEGAÇÃO
+   Referência no HTML: <header class="header"> em header.html
+   Funcionalidade: Barra fixa no topo com logo e menu de navegação
+   ======================================== */
+.header {
+  /* width: 100% - ocupa toda a largura */
+  width: 100%;
+  padding: 30px 8%;
+  /* position: fixed - fica fixo mesmo ao rolar a página */
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* z-index: 1000 - fica acima de outros elementos */
+  z-index: 1000;
+  background: var(--color-background);
+  /* box-shadow: sombra sutil que separa o header do conteúdo */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* .nav-container: Container que organiza logo e menu lado a lado
+   Referência no HTML: <div class="nav-container">
+   Funcionalidade: Usa flexbox para alinhar horizontalmente */
+.nav-container {
+  display: flex;
+  /* justify-content: space-between - logo à esquerda, menu à direita */
+  justify-content: space-between;
+  /* align-items: center - alinha verticalmente no meio */
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* .logo: Estilo da logo/imagem
+   Referência no HTML: <a href="index.html" class="logo">
+   Funcionalidade: Container para a imagem, alinha-a verticalmente */
+.logo {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  transition: var(--transition);
+}
+
+/* .logo img: Estilo da imagem dentro da logo
+   Funcionalidade: Define tamanho da imagem e como ela se comporta */
+.logo img {
+  /* width: 100px - tamanho da imagem */
+  width: 100px;
+  /* height: auto - mantém proporção original */
+  height: auto;
+  display: block;
+}
+
+/* .logo:hover img: Efeito ao passar mouse na logo
+   Funcionalidade: Logo fica levemente transparente como feedback visual */
+.logo:hover img {
+  opacity: 0.8;
+}
+
+/* .nav-menu: Menu de navegação
+   Referência no HTML: <nav class="nav-menu">
+   Funcionalidade: Lista de links alinhados horizontalmente */
+.nav-menu {
+  display: flex;
+  /* gap: espaço entre os links */
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+/* .nav-menu a: Links do menu
+   Funcionalidade: Estilo dos itens de navegação (Início, Sobre, etc) */
+.nav-menu a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 400;
+  /* position: relative - necessário para ::after funcionar */
+  position: relative;
+  transition: var(--transition);
+}
+
+/* .nav-menu a:hover: Efeito ao passar mouse nos links
+   Funcionalidade: Link fica mais escuro */
+.nav-menu a:hover {
+  color: var(--color-text);
+}
+
+/* .nav-menu a::after: Linha animada embaixo dos links
+   Funcionalidade: Cria efeito de sublinhado que cresce ao hover */
+.nav-menu a::after {
+  /* content: "" - elemento pseudo criado pelo CSS */
+  content: "";
+  position: absolute;
+  /* width: 0% - começa invisível */
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background: var(--color-primary);
+  transition: var(--transition);
+}
+
+/* Quando hovear, a linha ::after cresce de 0% para 100%
+   Funcionalidade: Animação suave do sublinhado */
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   SEÇÃO HERO
+   Referência no HTML: <section class="hero"> em index.html
+   Funcionalidade: Grande seção introdutória com título, subtítulo e botão
+   Visual: Altura total da janela (100vh), centraliza verticalmente
+   ======================================== */
+.hero {
+  /* height: 100vh - ocupa altura total da janela */
+  height: 100vh;
+  display: flex;
+  /* align-items: center - centraliza verticalmente o conteúdo */
+  align-items: center;
+  /* justify-content: center - centraliza horizontalmente o conteúdo */
+  justify-content: center;
+  padding: 0 8%;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* .hero-content: Container do conteúdo (título + texto + botão)
+   Funcionalidade: Limita largura máxima e adiciona animação */
+.hero-content {
+  max-width: 700px;
+  /* animation: fadeInUp - aplica animação definida no fim do arquivo */
+  animation: fadeInUp 0.8s ease;
+  /* text-align: center - centraliza título, texto e botão */
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* .hero .tag: Tag/label acima do título ("Grupo de Pesquisa")
+   Funcionalidade: Pequeno texto descritivo em maiúsculas */
+.hero .tag {
+  font-size: 0.9rem;
+  /* letter-spacing: aumenta espaço entre letras */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* .hero h1: Título principal da página
+   Funcionalidade: Texto grande e impactante que apresenta o site */
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 500;
+  margin: var(--spacing-sm) 0;
+  /* line-height: 1.2 - diminui espaço entre linhas em títulos grandes */
+  line-height: 1.2;
+  color: var(--color-text);
+  align-self: center;
+  text-align: center;
+}
+
+/* .hero p: Parágrafo descritivo
+   Funcionalidade: Texto de descrição com tamanho e espaçamento legível */
+.hero p {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.8;
+}
+
+/* ========================================
+   BOTÕES
+   Referência no HTML: <a href="#" class="btn-primary">
+   Funcionalidade: Botões reutilizáveis com efeitos hover e ativos
+   Uso: Botões de chamada para ação em várias seções do site
+   ======================================== */
+.btn-primary {
+  /* display: inline-block - permite padding/width em um elemento inline */
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 28px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 40px;
+  /* border: contorno do botão na mesma cor de fundo */
+  border: 2px solid var(--color-primary);
+  transition: all var(--transition);
+  font-weight: 500;
+  /* cursor: pointer - muda o cursor para mão ao passar */
+  cursor: pointer;
+}
+
+/* .btn-primary:hover: Efeito ao passar mouse
+   Funcionalidade: Botão fica mais escuro, sobe e ganha sombra */
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  /* transform: translateY(-2px) - sobe 2 pixels */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* .btn-primary:active: Efeito ao clicar
+   Funcionalidade: Botão volta ao posição normal (feedback de clique) */
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+  BOTÃO PARA O TOPO
+  Referência no HTML: <a href="#" class="btnTopo">
+   ======================================== */
+
+#btnTopo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 24px;
+  padding: 10px 15px;
+  background-color: #b3cba7;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#btnTopo:hover {
+  background-color: #a0b890;
+}
+
+
+
+/* ========================================
+   SEÇÃO SOBRE
+   Referência no HTML: <section id="sobre" class="sobre-section">
+   Funcionalidade: Seção com informações sobre o grupo de pesquisa
+   Visual: Texto centralizado em coluna única com largura máxima
+   ======================================== */
+.sobre-section {
+  /* padding: espaçamento interno grande */
+  padding: var(--spacing-xl) 8%;
+  /* max-width: 900px - limita largura para melhor leitura */
+  margin: 0 auto;
+  /* text-align: center - centraliza todo conteúdo */
+  text-align: center;
+  background: #b3cba7;
+}
+
+/* .sobre-section h2: Título da seção
+   Funcionalidade: Apresenta o título "Sobre o Grupo" */
+.sobre-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* .sobre-section p: Parágrafos de texto
+   Funcionalidade: Textos informativos com boa legibilidade */
+.sobre-section p {
+  font-size: 1.05rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  /* line-height: 1.8 - bastante espaço entre linhas para ler confortavelmente */
+  line-height: 1.8;
+}
+
+/* ========================================
+   CARDS (Coordenadores)
+   Referência no HTML: <div class="container-cards"> com <div class="card">
+   Funcionalidade: Exibe cards com imagem, nome e descrição dos coordenadores
+   Visual: Grid responsivo que se adapta para múltiplas colunas
+   ======================================== */
+.container-cards {
+  /* display: grid - cria layout de grade responsiva */
+  display: grid;
+  /* grid-template-columns: auto-fit, minmax(280px, 1fr)
+     Cria colunas que crescem/diminuem mantendo mínimo de 280px
+     Exemplo: 3 cards em desktop, 1 em mobile */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* gap: espaço entre os cards */
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) 8%;
+  /* max-width: limita largura do container para melhor proporção */
+  max-width: 1000px;
+  /* margin: 0 auto - centraliza o container na página */
+  margin: 0 auto;
+}
+
+/* .card: Estilo individual de cada card
+   Funcionalidade: Container para imagem + informações de cada coordenador */
+.card {
+  background: var(--color-white);
+  border-radius: 20px;
+  /* overflow: hidden - garante que imagem não sai do border-radius */
+  overflow: hidden;
+  transition: var(--transition-long);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* .card img: Imagem dentro do card
+   Funcionalidade: Foto do coordenador com altura fixa */
+.card img {
+  width: 100%;
+  height: 350px;
+  /* object-fit: cover - cobre o espaço mantendo proporção (recorta se necessário) */
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-long);
+}
+
+/* .card .info: Container de texto no card
+   Funcionalidade: Nome e descrição abaixo da imagem */
+.card .info {
+  padding: 25px;
+}
+
+/* .card h2: Título/nome do coordenador
+   Funcionalidade: Nome em destaque */
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+
+/* .card p: Descrição do coordenador
+   Funcionalidade: Breve texto sobre o coordenador */
+.card p {
+  font-size: 0.95rem;
+  color: var(--color-card-text);
+  line-height: 1.7;
+}
+
+/* .card:hover: Efeito ao passar mouse
+   Funcionalidade: Card sobe e ganha mais sombra para destaque */
+.card:hover {
+  /* transform: translateY(-10px) - sobe 10 pixels */
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* .card:hover img: Efeito da imagem ao hover
+   Funcionalidade: Imagem cresce um pouco (zoom) quando card é hoverado */
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   SEÇÃO COORDENADORES
+   Referência no HTML: <section class="equipe-section">
+   Funcionalidade: Contém os cards de coordenadores com títulos 
+   centralizados e bem espaçados
+   ======================================== */
+.equipe-section {
+  /* padding: espaçamento interno (topo/baixo e esquerda/direita) */
+  padding: var(--spacing-xl) 8%;
+  /* text-align: center - centraliza seção inteira */
+  text-align: center;
+  /* max-width e margin para centralizar o container */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* .section-header: Estilo para cabeçalho das seções (título + tag)
+   Funcionalidade: Centraliza e organiza visualmente o título e tag */
+.section-header {
+  /* text-align: center - alinha todos os elementos filhos ao centro */
+  text-align: center;
+  /* margin-bottom: espaço abaixo do cabeçalho antes dos cards */
+  margin-bottom: 30px auto;
+}
+
+/* tag dentro de .section-header
+   Funcionalidade: Tag aparece em bloco próprio acima do título */
+.section-header .tag {
+  /* display: block - faz a tag ocupar a linha inteira */
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* h2 dentro de .section-header
+   Funcionalidade: Estilo do título principal das seções */
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* ========================================
+   SEÇÃO PESQUISADORES - DESTAQUE
+   Referência no HTML: <section class="pesquisadores-section">
+   Funcionalidade: Seção com fundo gradiente diferenciado para destacar
+   a área de pesquisadores com visual distinto do resto da página
+   ======================================== */
+.pesquisadores-section {
+  /* padding: espaçamento interno */
+  padding: var(--spacing-xl) 8%;
+  /* background: gradiente linear de 135 graus (diagonal) com tons de cinza
+     Cria profundidade visual e destaca a seção */
+  background: #b3cba7;
+  /* border-radius: cantos arredondados para aspecto moderno */
+}
+
+/* .container dentro de .pesquisadores-section
+   Funcionalidade: Centraliza todo o conteúdo da seção */
+.pesquisadores-section .container {
+  /* text-align: center - alinha titulo, tag e texto ao centro */
+  text-align: center;
+}
+
+/* h2 dentro de .pesquisadores-section
+   Funcionalidade: Estilo do título "Pesquisadores" */
+.pesquisadores-section h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+/* p dentro de .pesquisadores-section
+   Funcionalidade: Descrição/parágrafo da seção de pesquisadores */
+.pesquisadores-section p {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.8;
+}
+
+/* tag dentro de .pesquisadores-section
+   Funcionalidade: Label/etiqueta "Equipe" aparece como bloco antes do título */
+.pesquisadores-section .tag {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+
+/* Seção de publicações pode ser estilizada de forma similar à de pesquisadores, 
+   com variações de cores e espaçamentos para criar hierarquia visual */
+.publicacao-section {
+  padding: var(--spacing-xl) 12%;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.publicacao-grid {
+  margin: 60px auto; /*centraliza */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.publicacao-grid .card {
+  width: 320px;
+  padding: 30px 0;
+}
+
+/* ========================================
+   RODAPÉ
+   Referência no HTML: <footer> em footer.html
+   Funcionalidade: Seção final com informações de contato e direitos
+   Visual: Fundo escuro contrastando com o resto da página
+   ======================================== */
+footer {
+  background: #628c44;
+  color: var(--color-white);
+  padding: var(--spacing-lg) 8%;
+  /* text-align: center - centraliza todo conteúdo do footer */
+  text-align: center;
+  margin-top: var(--spacing-lg);
+}
+
+/* footer p: Parágrafos do footer
+   Funcionalidade: Texto com informações de copyright e contato */
+footer p {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLETS (max-width: 768px)
+   Funcionalidade: Ajusta o layout para telas menores sem quebrar visual
+   Alterações: Fonts menores, grids com menos colunas, padding reduzido
+   ======================================== */
+@media (max-width: 768px) {
+  /* Reduz padding do body pois header fica menor */
+  body {
+    padding-top: 80px;
+  }
+
+  .header {
+    padding: 20px 5%;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  /* Reduz gap entre links do menu */
+  .nav-menu {
+    gap: var(--spacing-sm);
+  }
+
+  .nav-menu a {
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding: 0 5%;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    margin: var(--spacing-lg) 0;
+  }
+
+  /* Hero h1 fica menor em tablets */
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* Grid de cards em tablets: 2 colunas em vez de 3 */
+  .container-cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg) 5%;
+  }
+
+  /* Imagem do card menor */
+  .card img {
+    height: 250px;
+  }
+
+  .sobre-section {
+    padding: var(--spacing-lg) 5%;
+  }
+
+  .sobre-section h2 {
+    font-size: 2rem;
+  }
+
+  footer {
+    padding: var(--spacing-lg) 5%;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE - MOBILE (max-width: 480px)
+   Funcionalidade: Otimiza layout para smartphones
+   Alterações: Uma coluna, navegação em linha, fonts bem menores
+   ======================================== */
+@media (max-width: 480px) {
+  .header {
+    padding: 15px 4%;
+  }
+
+  /* Menu pode quebrar em múltiplas linhas */
+  .nav-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-menu {
+    width: 100%;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    padding: 0 4%;
+  }
+
+  /* Hero h1 bem menor em mobile */
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  /* Grid de cards em mobile: 1 coluna apenas */
+  .container-cards {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-lg) 4%;
+  }
+
+  .card img {
+    height: 200px;
+  }
+
+  .sobre-section {
+    padding: var(--spacing-lg) 4%;
+  }
+
+  .sobre-section h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* ========================================
+   ANIMAÇÕES
+   Funcionalidade: Define movimentos e transições suaves
+   Uso: Aplicadas em elementos via animation: [nome] [duração] [timing]
+   ======================================== */
+
+/* @keyframes fadeInUp: Animação de entrada suave
+   Funcionalidade: Elemento aparece gradualmente enquanto sobe
+   Uso: Aplicado em .hero-content para efeito de entrada elegante
+   
+   Explicação dos passos:
+   - from (0%): Elemento invisível (opacity: 0) e 30px mais baixo
+   - to (100%): Elemento visível (opacity: 1) na posição final
+   - Duração: 0.8s (definida no .hero-content)
+*/
+@keyframes fadeInUp {
+  from {
+    /* opacity: 0 - invisível no início */
+    opacity: 0;
+    /* translateY(30px) - começa 30 pixels abaixo da posição final */
+    transform: translateY(30px);
+  }
+  to {
+    /* opacity: 1 - totalmente visível no final */
+    opacity: 1;
+    /* translateY(0) - volta à posição normal */
+    transform: translateY(0);
+  }
+}
