@@ -524,15 +524,70 @@ footer {
   background: #628c44;
   color: var(--color-white);
   padding: var(--spacing-lg) 8%;
-  /* text-align: center - centraliza todo conteúdo do footer */
-  text-align: center;
   margin-top: var(--spacing-lg);
 }
 
-/* footer p: Parágrafos do footer
-   Funcionalidade: Texto com informações de copyright e contato */
-footer p {
+/* .footer-container: Container principal do footer
+   Funcionalidade: Organiza as seções (Contato, Localização, Redes Sociais)
+   lado a lado usando flexbox */
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* .footer-info: Seção individual do footer
+   Funcionalidade: Cada coluna com título e conteúdo */
+.footer-info {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+}
+
+/* .footer-info h3: Título das seções do footer
+   Funcionalidade: Destaca o título de cada coluna */
+.footer-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
   margin-bottom: var(--spacing-sm);
+}
+
+/* .footer-info p: Parágrafos do footer
+   Funcionalidade: Texto com informações de contato, localização, etc */
+.footer-info p {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* .footer-info a: Links do footer
+   Funcionalidade: Estilo dos links nas redes sociais */
+.footer-info a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-info a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* .footer-bottom: Seção de copyright no final
+   Funcionalidade: Informações de direitos autorais */
+.footer-bottom {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 /* ========================================
@@ -604,6 +659,10 @@ footer p {
 
   footer {
     padding: var(--spacing-lg) 5%;
+  }
+
+  .footer-container {
+    flex-direction: column;
   }
 }
 
