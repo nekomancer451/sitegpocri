@@ -2,13 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Pesquisadores</title>
-  <link rel="stylesheet" href="style.css"> <!-- Certifique-se de apontar para seu CSS -->
+  <meta name="description" content="Conheça os pesquisadores do GP/OCRI - Grupo de Pesquisa em Organização do Conhecimento">
+  <title>Pesquisadores - GP/OCRI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div id="header"></div>
-
   <script>
     fetch("header.html")
       .then(response => response.text())
@@ -18,58 +18,104 @@
   </script>
 
   <main>
-  <section id="pesquisadores">
-    <div class="container">
-      <h2>Recursos Humanos</h2>
-      <table id="tabela-pesquisadores" border="1">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Função</th>
-            <th>Vínculo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Os dados serão inseridos aqui -->
-        </tbody>
-      </table>
-    </div>
-  </section>
+    <section class="hero-page">
+      <div class="hero-page-content">
+        <h1>Recursos Humanos</h1>
+        <p>Conheça a equipe de pesquisadores do GP/OCRI</p>
+      </div>
+    </section>
 
-      <script>
-      fetch('pesquisadores.csv')
-        .then(response => response.text())
-        .then(data => {
-          const linhas = data.trim().split('\n');
-          const corpoTabela = document.querySelector('#tabela-pesquisadores tbody');
+    <section id="pesquisadores" class="pesquisadores-page">
+      <div class="container">
+        
+        <div class="stats-rh">
+          <div class="stat-box">
+            <h3>29</h3>
+            <p>Pesquisadores</p>
+          </div>
+          <div class="stat-box">
+            <h3>1</h3>
+            <p>Estudante</p>
+          </div>
+          <div class="stat-box">
+            <h3>5</h3>
+            <p>Técnicos</p>
+          </div>
+          <div class="stat-box">
+            <h3>1</h3>
+            <p>Colaborador Estrangeiro</p>
+          </div>
+        </div>
 
-          for (let i = 1; i < linhas.length; i++) {
-            const colunas = linhas[i].split(',');
-            const linhaHTML = `<tr><td>${colunas[0]}</td><td>${colunas[1]}</td><td>${colunas[2]}</td></tr>`;
-            corpoTabela.innerHTML += linhaHTML;
-          }
-        });
-      </script>
+        <h2>Pesquisadores Ativos</h2>
+        <table id="tabela-pesquisadores" class="tabela-rh">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Titulação</th>
+              <th>Data de Inclusão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Os dados serão inseridos aqui via JavaScript -->
+          </tbody>
+        </table>
+
+        <div class="info-legenda">
+          <p><strong>Última atualização:</strong> 22/05/2023</p>
+          <p>Para mais informações detalhadas, consulte o <a href="https://dgp.cnpq.br/dgp/espelhogrupo/23169" target="_blank">Diretório de Grupos de Pesquisa do CNPq</a></p>
+        </div>
+
+      </div>
+    </section>
 
   </main>
-   
-<button id="btnTopo" title="Voltar ao topo">↑</button>
-<script>
-  const btnTopo = document.getElementById("btnTopo");
 
-  window.onscroll = function () {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      btnTopo.style.display = "block";
-    } else {
-      btnTopo.style.display = "none";
-    }
-  };
+  <button id="btnTopo" title="Voltar ao topo">↑</button>
+  <script>
+    // Carrega dados do CSV
+    fetch('pesquisadores.csv')
+      .then(response => response.text())
+      .then(data => {
+        const linhas = data.trim().split('\n');
+        const corpoTabela = document.querySelector('#tabela-pesquisadores tbody');
+        corpoTabela.innerHTML = ''; // Limpa linhas anteriores
 
-  btnTopo.addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
+        for (let i = 1; i < linhas.length; i++) {
+          if (linhas[i].trim() === '') continue; // Pula linhas vazias
+          
+          const colunas = linhas[i].split(',');
+          const nome = colunas[0]?.trim() || '';
+          const titulacao = colunas[1]?.trim() || '';
+          const data = colunas[2]?.trim() || '';
+          
+          if (nome) {
+            const linhaHTML = `
+              <tr>
+                <td class="nome">${nome}</td>
+                <td class="titulacao">${titulacao}</td>
+                <td class="data">${data}</td>
+              </tr>
+            `;
+            corpoTabela.innerHTML += linhaHTML;
+          }
+        }
+      })
+      .catch(error => console.error('Erro ao carregar CSV:', error));
 
+    // Botão voltar ao topo
+    const btnTopo = document.getElementById("btnTopo");
+    window.onscroll = function () {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        btnTopo.style.display = "block";
+      } else {
+        btnTopo.style.display = "none";
+      }
+    };
+    btnTopo.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 
   <div id="footer"></div>
   <script>
